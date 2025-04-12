@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel - Blockchain Voting</title>
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+    <script src="admin.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Panel - Blockchain Voting</h1>
+
+        <!-- Connect Wallet -->
+        <div class="section" id="connect-section">
+            <h2>Connect Your Wallet</h2>
+            <button id="connect-btn" onclick="connectWallet()">Connect Wallet</button>
+            <p id="wallet-status">Not Connected</p>
+        </div>
+
+        <!-- Add Candidate -->
+        <div class="section">
+            <h2>Add Candidate</h2>
+            <input type="text" id="candidateName" placeholder="Candidate Name">
+            <button onclick="addCandidate()">Add</button>
+            <p id="add-status"></p>
+        </div>
+
+        <!-- Candidates List -->
+        <div class="section">
+            <h2>Candidates List :</h2>
+            <ul id="candidate-list">Loading candidates...</ul>
+        </div>
+
+        <!-- Register Voter -->
+        <div class="section">
+            <h2>Register Voter</h2>
+            <input type="text" id="voterAddress" placeholder="Voter Ethereum Address">
+            <button onclick="registerVoter()">Register</button>
+            <p id="register-status"></p>
+        </div>
+
+        <!-- Voter List -->
+        <div class="section">
+            <h2>Voters List :</h2>
+            <ul id="voter-list">Loading voters...</ul>
+        </div>
+
+        <!-- Reset Election -->
+        <div class="section">
+            <h2>Reset Election</h2>
+            <button onclick="resetElection()">Reset</button>
+            <p id="reset-status"></p>
+        </div>
+    </div>
+</body>
+</html>

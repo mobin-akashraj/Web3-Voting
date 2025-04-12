@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Main Container */
+.container {
+    max-width: 600px;
+    width: 90%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Header Styling */
+h1, h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Input and Button Styling */
+input, button {
+    width: 90%;
+    max-width: 600px;
+    padding: 12px 16px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Input Styling */
+input {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+input:focus {
+    border: 1px solid #4caf50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Button Styles */
+button {
+    background-color: #4caf50;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Wallet Button */
+#connect-btn {
+    background-color: #FF671F; /* Dark Orange */
+    transition: all 0.3s ease-in-out;
+}
+
+#connect-btn:hover {
+    background-color: #ff7e33; /* Lighter Orange on hover */
+    transform: translateY(-2px);
+}
+
+
+/* Paragraphs and Status */
+p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Candidate & Results Section */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+/* Scrollbar Styling */
+ul::-webkit-scrollbar {
+    width: 8px;
+}
+ul::-webkit-scrollbar-track {
+    background: #f4f4f4;
+    border-radius: 10px;
+}
+ul::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+/* Candidate and Result Cards */
+li {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease-in-out;
+}
+
+li:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.02);
+}
+
+/* Divider */
+hr {
+    margin: 20px 0;
+    border: 0.5px solid #ddd;
+}
+
+/* Card Styling */
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Vote Status Feedback */
+#vote-status {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Success and Error Messages */
+.success {
+    color: #2ecc71;
+}
+
+.error {
+    color: #e74c3c;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    input, button {
+        padding: 10px 12px;
+    }
+
+    li {
+        padding: 10px;
+    }
+}
+
+/* Custom Scrollbar for Lists */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+    overflow-y: auto; /* Vertical scroll only */
+    max-height: 200px; /* Adjust height as needed */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Hide horizontal scrollbar */
+ul::-webkit-scrollbar {
+    width: 6px; /* Thin vertical scrollbar */
+    height: 0;  /* Kill horizontal scrollbar */
+}
+
+/* Track (background) */
+ul::-webkit-scrollbar-track {
+    background: #f4f4f4;
+    border-radius: 10px;
+}
+
+/* Handle (scroll) */
+ul::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Handle on Hover */
+ul::-webkit-scrollbar-thumb:hover {
+    background-color: #bbb;
+}
+
+/* Prevent horizontal scroll */
+ul {
+    overflow-x: hidden; /* No horizontal scroll */
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #f4f4f4;
+}
+

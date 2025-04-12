@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Page - Blockchain Voting</title>
+    <link rel="stylesheet" href="voter.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+    <script src="voter.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Blockchain Voting Page</h1>
+
+        <!-- Connect Wallet Section -->
+        <div class="section" id="connect-section">
+            <h2>Connect Your Wallet</h2>
+            <button id="connect-btn" onclick="connectWallet()">Connect Wallet</button>
+            <p id="wallet-status">Not Connected</p>
+        </div>
+
+        <!-- Candidate List Section -->
+        <div class="section">
+            <h2>Candidate List</h2>
+            <ul id="candidate-list">Connect a voter wallet to load candidates...</ul>
+        </div>
+
+        <!-- Vote Section -->
+        <div class="section">
+            <h2>Cast Your Vote</h2>
+            <select id="candidate-select">
+                <option value="">Select a Candidate</option>
+            </select>
+            <button onclick="vote()">Vote</button>
+            <p id="vote-status" class="error"></p>
+        </div>
+
+        <!-- Results Section -->
+        <div class="section">
+            <h2>View Results</h2>
+            <button onclick="getResults()">View Results</button>
+            <ul id="results-list"></ul>
+        </div>
+    </div>
+</body>
+</html>

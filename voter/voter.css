@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f7fa; /* Soft, neutral background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main Container */
+.container {
+    width: 90%;
+    max-width: 700px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-height: 90vh;
+    overflow-y: auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hide scrollbar */
+.container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 8px;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: #34495e;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+button {
+    padding: 12px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #2d87f0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #1e6bcc;
+    transform: translateY(-2px);
+}
+
+/* Wallet Status */
+#wallet-status {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #27ae60;
+    text-align: center;
+}
+
+/* Section Styles */
+.section {
+    margin-top: 25px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Section Scrollbar */
+.section::-webkit-scrollbar {
+    width: 6px;
+}
+
+.section::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 6px;
+}
+
+/* Candidate List */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+li {
+    margin: 8px 0;
+    padding: 12px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+li:hover {
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+}
+
+/* Input Field Styling */
+input {
+    padding: 12px;
+    width: 90%;
+    max-width: 300px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+input:focus {
+    border-color: #2d87f0;
+    box-shadow: 0 0 10px rgba(45, 135, 240, 0.2);
+}
+
+/* Error Message */
+.error {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+/* Result List */
+#results-list li {
+    background-color: #eaf6ff;
+    border-left: 5px solid #2d87f0;
+}
+
+#candidate-list li {
+    background-color: #f4f4f4;
+    border-left: 5px solid #95a5a6;
+}
+
+/* Connect Wallet Section */
+#connect-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Button Fix */
+button:focus {
+    outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    input {
+        width: 100%;
+    }
+}
+
+#vote-status {
+    font-weight: bold;
+    margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hide Scrollbar */
+.container, .section {
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+}
+
+.container::-webkit-scrollbar, 
+.section::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+/* Remove number input field arrows */
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Chrome, Safari */
+    margin: 0;
+}
+
+/* Add this CSS rule to adjust the dropdown size */
+select {
+    width: 60%; /* Adjust width as needed (e.g., 100% for full width) */
+    padding: 12px; /* Adjust padding for height */
+    border-radius: 8px; /* Match the style with other input elements */
+    border: 1px solid #d1d5db; /* Border style */
+    outline: none; /* Remove outline */
+    font-size: 14px; /* Font size */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Optional: Add focus effect */
+select:focus {
+    border-color: #2d87f0; /* Change border color on focus */
+    box-shadow: 0 0 10px rgba(45, 135, 240, 0.2); /* Add shadow on focus */
+}

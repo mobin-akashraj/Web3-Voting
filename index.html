@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Blockchain Based E-Voting System</h1>
+        <p>Please connect your wallet to continue:</p>
+
+        <button id="connect-wallet-btn" onclick="connectWallet()">Connect Wallet</button>
+        <p id="wallet-status">Not Connected</p>
+
+        <div class="btn-container">
+            <button id="admin-btn" onclick="openAdmin()" disabled>Login as Admin</button>
+            <button id="voter-btn" onclick="openVoter()" disabled>Login as Voter</button>
+        </div>
+    </div>
+
+    <script>
+        const web3 = new Web3(window.ethereum);
+        const contractAddress = "0x325ae251836201053219fcfd43b7cb6f22935ff2";  // update your contract address
+		const contractABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			}
+		],
+		"name": "addCandidate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_voter",
+				"type": "address"
+			}
+		],
+		"name": "registerVoter",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "resetElection",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_candidateId",
+				"type": "uint256"
+			}
+		],
+		"name": "vote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "admin",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "amIVoter",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "candidates",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "voteCount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "candidatesCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllCandidates",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"internalType": "struct Voting.CandidatePublic[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getVoters",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "hasVoted",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_voter",
+				"type": "address"
+			}
+		],
+		"name": "isRegisteredVoter",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "registeredVoters",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "voters",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]; // Add the actual ABI here if needed
+        const adminAddress = "0x874A99D4C1dFa854e63Ae439980b258Db15305D0".toLowerCase();
+
+        let contract;
+        let userAccount = null;
+
+        // Connect Wallet
+        async function connectWallet() {
+            if (!window.ethereum) {
+                alert("MetaMask not detected! Please install it.");
+                return;
+            }
+
+            try {
+                const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+                userAccount = accounts[0].toLowerCase();
+                document.getElementById("wallet-status").innerText = `✅ Connected: ${userAccount}`;
+                await checkAccess();
+            } catch (error) {
+                console.error("Wallet connection failed:", error);
+                alert("Wallet connection failed! Check MetaMask.");
+            }
+        }
+
+        // Open Admin or Voter Pages in a New Tab
+        function openAdmin() {
+            window.open("admin/admin.html", "_blank");
+        }
+
+        function openVoter() {
+            window.open("voter/voter.html", "_blank");
+        }
+
+        // Auto-Check on Page Load
+        window.onload = async () => {
+            await connectWallet();
+        };
+
+        // Check Access & Enable Buttons
+		async function checkAccess() {
+			if (!userAccount) return;
+
+			// 🔍 Check voter status using contract
+			try {
+				contract = new web3.eth.Contract(contractABI, contractAddress);
+				const isVoter = await contract.methods.isRegisteredVoter(userAccount).call();
+				console.log(`Voter Status: ${isVoter}`);
+
+				if (userAccount === adminAddress) {
+					console.log("Access: Admin");
+					document.getElementById("admin-btn").disabled = false;
+				}
+				
+				if (isVoter || userAccount === adminAddress) {
+					console.log("Access: Voter");
+					document.getElementById("voter-btn").disabled = false;
+				}
+			} catch (error) {
+				console.error("Error checking access:", error);
+			}
+		}
+
+
+        // Fetch Voter List
+        async function getVoterList() {
+            try {
+                contract = new web3.eth.Contract(contractABI, contractAddress);
+                const voters = await contract.methods.getVoters().call();
+                return voters.map(v => v.toLowerCase());
+            } catch (error) {
+                console.error("Failed to fetch voter list:", error);
+                return [];
+            }
+        }
+
+        
+    </script>
+</body>
+
+</html>
