@@ -3,7 +3,7 @@
 
 A decentralized and secure voting system built on blockchain technology. This system utilizes smart contracts to ensure transparency, immutability, and fairness in elections. It includes both an admin and voter interface, enabling the management of elections and casting of votes.
 
-## Tech Stack:
+## Tech Stack
 
 Blockchain: Ethereum
 
