@@ -23,7 +23,7 @@ Install Truffle and Ganache (for local Ethereum blockchain).
 
 Clone the repository:
 
-+ git clone https://github.com/yourusername/Blockchain-E-Voting-System.git
++ git clone https://github.com/mobin-akashraj/Web3-Voting.git
 
 + cd Blockchain-E-Voting-System
 
