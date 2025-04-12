@@ -9,8 +9,6 @@ Blockchain: Ethereum
 
 Frontend: HTML, CSS, JavaScript
 
-Web3: Web3.js for Ethereum integration
-
 Development Tools: Node.js, Truffle, MetaMask
 
 
