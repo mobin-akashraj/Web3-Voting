@@ -1,5 +1,5 @@
 # Web3-Voting
-Blockchain Based E-Voting System
+## Blockchain Based E-Voting System
 
 A decentralized and secure voting system built on blockchain technology. This system utilizes smart contracts to ensure transparency, immutability, and fairness in elections. It includes both an admin and voter interface, enabling the management of elections and casting of votes.
 
@@ -21,24 +21,25 @@ Install MetaMask for browser wallet integration.
 
 Install Truffle and Ganache (for local Ethereum blockchain).
 
-Steps to Run Locally:
+### Steps to Run Locally:
 
 Clone the repository:
 
-git clone https://github.com/yourusername/Blockchain-E-Voting-System.git
++ git clone https://github.com/yourusername/Blockchain-E-Voting-System.git
 
-cd Blockchain-E-Voting-System
++ cd Blockchain-E-Voting-System
 
 Install dependencies:
 
-npm install
++ npm install
 
 Deploy the smart contract (if you’re setting it up for the first time):
-truffle migrate
 
-Open the index.html in your browser.
++ truffle migrate
 
-Connect your MetaMask wallet and interact with the system!
++ Open the index.html in your browser.
+
++ Connect your MetaMask wallet and interact with the system!
 
 
 ## License:
