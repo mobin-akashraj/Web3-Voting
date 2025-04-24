@@ -1,4 +1,4 @@
-const contractAddress = "0x4d4d37229cb6e1154d92766f6237e2e3e5353522";
+const contractAddress = "0x4d4d37229cb6e1154d92766f6237e2e3e5353522"; // Update contract address
 
 const contractABI = [
 	{
@@ -253,13 +253,12 @@ const contractABI = [
 		"stateMutability": "view",
 		"type": "function"
 	}
-];
+];  // Update ABI only if you made any change to the web3voting.sol
 
 let web3;
 let contract;
 let account;
 
-// Connect Wallet
 async function connectWallet() {
     if (window.ethereum) {
         web3 = new Web3(window.ethereum);
@@ -278,7 +277,6 @@ async function connectWallet() {
     }
 }
 
-// Add Candidate
 async function addCandidate() {
     const candidateNameInput = document.getElementById("candidateName");
     const candidateName = candidateNameInput.value;
@@ -293,7 +291,6 @@ async function addCandidate() {
         await contract.methods.addCandidate(candidateName).send({ from: account });
         statusElement.innerText = `Candidate "${candidateName}" added successfully!`;
 
-        // Clear input after success
         candidateNameInput.value = "";
 
         listCandidates();
@@ -303,7 +300,6 @@ async function addCandidate() {
 }
 
 
-// Register Voter
 async function registerVoter() {
     const voterAddressInput = document.getElementById("voterAddress");
     const voterAddress = voterAddressInput.value;
@@ -318,7 +314,6 @@ async function registerVoter() {
         await contract.methods.registerVoter(voterAddress).send({ from: account });
         statusElement.innerText = `Voter ${voterAddress} registered successfully!`;
 
-        // Clear input after success
         voterAddressInput.value = "";
 
         listVoters();
@@ -328,7 +323,6 @@ async function registerVoter() {
 }
 
 
-// List All Candidates
 async function listCandidates() {
     try {
         const candidates = await contract.methods.getAllCandidates().call();
@@ -342,7 +336,6 @@ async function listCandidates() {
     }
 }
 
-// List All Voters with Index
 async function listVoters() {
     try {
         const voters = await contract.methods.getVoters().call();
@@ -357,8 +350,8 @@ async function listVoters() {
             });
         }
 
-        console.log("Voter List:", voters); // Debug: Print voters in console
-        return voters; // Return voter array just like candidates
+        console.log("Voter List:", voters);
+        return voters;
     } catch (error) {
         console.error("Error fetching voters:", error);
         return [];
