@@ -25,7 +25,7 @@ Clone the repository:
 
 + git clone https://github.com/mobin-akashraj/Web3-Voting.git
 
-+ cd Blockchain-E-Voting-System
++ cd Web3-Voting
 
 Install dependencies:
 
