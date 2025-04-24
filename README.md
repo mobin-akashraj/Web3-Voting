@@ -15,7 +15,7 @@ Development Tools: Ganache, Remix IDE, MetaMask
 
 
 ## Getting Started
-### Prerequisites
+### Prerequisites:
 
 Install MetaMask for browser wallet integration.
 
