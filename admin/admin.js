@@ -366,7 +366,6 @@ async function listVoters() {
 }
 
 
-// ✅ Reset Election
 async function resetElection() {
     const statusElement = document.getElementById("reset-status");
     try {
