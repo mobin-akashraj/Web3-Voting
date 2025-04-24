@@ -1,4 +1,4 @@
-const contractAddress = "0x325ae251836201053219fcfd43b7cb6f22935ff2";
+const contractAddress = "0x4d4d37229cb6e1154d92766f6237e2e3e5353522";
 
 const contractABI = [
 	{
@@ -167,6 +167,25 @@ const contractABI = [
 			}
 		],
 		"name": "hasVoted",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_voter",
+				"type": "address"
+			}
+		],
+		"name": "hasVotedStatus",
 		"outputs": [
 			{
 				"internalType": "bool",
