@@ -7,9 +7,11 @@ A decentralized and secure voting system built on blockchain technology. This sy
 
 Blockchain: Ethereum
 
+Smart Contract Language: Solidity
+
 Frontend: HTML, CSS, JavaScript
 
-Development Tools: Node.js, Truffle, MetaMask
+Development Tools: Ganache, Remix IDE, MetaMask
 
 
 ## Getting Started
@@ -17,7 +19,9 @@ Development Tools: Node.js, Truffle, MetaMask
 
 Install MetaMask for browser wallet integration.
 
-Install Truffle and Ganache (for local Ethereum blockchain).
+Install Ganache (for local Ethereum blockchain).
+
++ https://archive.trufflesuite.com/ganache/
 
 ### Steps to Run Locally:
 
@@ -27,13 +31,33 @@ Clone the repository:
 
 + cd Web3-Voting
 
-Install dependencies:
++ Start Ganache and keep it running. Note the RPC URL and Chain ID.
 
-+ npm install
++ Add Ganache as a custom network in MetaMask:
 
-Deploy the smart contract (if you’re setting it up for the first time):
+ - RPC URL: http://127.0.0.1:7545
 
-+ truffle migrate
+ - Chain ID: 1337 or 5777 (whichever Ganache shows)
+
+ - Import a private key from Ganache into MetaMask
+
++ Open Remix IDE:
+
+ - Create or paste your web3voting.sol smart contract
+
+ - Set compiler version to 0.8.0
+
+ - Deploy using "Injected Provider - MetaMask"
+
+ - Accept the MetaMask prompt
+
++ After deployment, copy the contract address and ABI (if you made any changes to .sol) and replace it in:
+
+ - index.html
+
+ - admin.js
+
+ - voter.js
 
 + Open the index.html in your browser.
 
