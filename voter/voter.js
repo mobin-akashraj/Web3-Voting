@@ -1,13 +1,13 @@
 // voter.js - Blockchain-Based E-Voting System (Voter Panel)
 
-const contractAddress = "0x325ae251836201053219fcfd43b7cb6f22935ff2"; // Update with your deployed contract address
+const contractAddress = "0x4d4d37229cb6e1154d92766f6237e2e3e5353522"; // Update with your deployed contract address
 
 let web3;
 let contract;
 let account;
 
 // Load ABI directly (Manually define ABI or fetch from file)
-const contractABI = [
+const contractABI =[
 	{
 		"inputs": [
 			{
@@ -174,6 +174,25 @@ const contractABI = [
 			}
 		],
 		"name": "hasVoted",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_voter",
+				"type": "address"
+			}
+		],
+		"name": "hasVotedStatus",
 		"outputs": [
 			{
 				"internalType": "bool",
