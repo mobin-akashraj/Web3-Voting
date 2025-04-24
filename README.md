@@ -34,7 +34,7 @@ Clone the repository:
 + Start Ganache and keep it running. Note the RPC URL and Chain ID.
 
 + Add Ganache as a custom network in MetaMask:
-+     RPC URL: http://127.0.0.1:7545
+  + RPC URL: http://127.0.0.1:7545
 
  - Chain ID: 1337 or 5777 (whichever Ganache shows)
 
