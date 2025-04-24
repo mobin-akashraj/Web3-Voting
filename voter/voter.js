@@ -1,12 +1,10 @@
-// voter.js - Blockchain-Based E-Voting System (Voter Panel)
-
 const contractAddress = "0x4d4d37229cb6e1154d92766f6237e2e3e5353522"; // Update with your deployed contract address
 
 let web3;
 let contract;
 let account;
 
-// Load ABI directly (Manually define ABI or fetch from file)
+// Update ABI only if you made any changes to web3voting.sol
 const contractABI =[
 	{
 		"inputs": [
@@ -262,7 +260,6 @@ const contractABI =[
 	}
 ];
 
-// Connect to MetaMask
 async function connectWallet() {
     if (window.ethereum) {
         web3 = new Web3(window.ethereum);
@@ -273,10 +270,8 @@ async function connectWallet() {
 
             document.getElementById("wallet-status").innerText = `✅ Connected: ${account}`;
 
-            // Check if the connected account is a registered voter
             await checkVoterStatus();
 
-            // Auto-load candidates after connecting
             listCandidates();
         } catch (error) {
             console.error("Error connecting to wallet:", error);
@@ -287,13 +282,11 @@ async function connectWallet() {
     }
 }
 
-// Check if the connected account is a registered voter
 async function checkVoterStatus() {
     try {
         const isVoter = await contract.methods.isRegisteredVoter(account).call();
         console.log(`Voter Status: ${isVoter}`);
-        
-        // REMOVE REDIRECTION - BUGGY ❗️
+
         if (!isVoter) {
             alert("You are NOT a registered voter.");
             return;
@@ -305,12 +298,11 @@ async function checkVoterStatus() {
 }
 
 
-// List Candidates
 async function listCandidates() {
     try {
         const candidatesCount = await contract.methods.candidatesCount().call();
         const candidateSelect = document.getElementById("candidate-select");
-        candidateSelect.innerHTML = `<option value="">Select a Candidate</option>`; // Clear and reset dropdown
+        candidateSelect.innerHTML = `<option value="">Select a Candidate</option>`;
 
         for (let i = 1; i <= candidatesCount; i++) {
             const candidate = await contract.methods.candidates(i).call();
@@ -323,48 +315,42 @@ async function listCandidates() {
     }
 }
 
-// Cast Vote
 async function vote() {
     if (!account) {
         alert("Please connect your MetaMask wallet first.");
         return;
     }
 
-    const candidateId = document.getElementById("candidate-select").value; // Get selected candidate ID
+    const candidateId = document.getElementById("candidate-select").value;
     if (!candidateId) {
         alert("Please select a candidate.");
         return;
     }
 
     try {
-        // Check if voter is registered before voting
         const isVoter = await contract.methods.isRegisteredVoter(account).call();
         if (!isVoter) {
             alert("You are NOT registered as a voter.");
             return;
         }
 
-        // Check if the voter has already voted
         const alreadyVoted = await contract.methods.hasVoted(account).call();
         if (alreadyVoted) {
             alert("You have already voted.");
             return;
         }
 
-        // Cast the vote
         await contract.methods.vote(candidateId).send({ from: account });
         alert("Vote casted successfully!");
 
-        // Refresh candidate list to update vote count
         listCandidates();
-        document.getElementById("candidate-select").value = ""; // Reset dropdown
+        document.getElementById("candidate-select").value = "";
     } catch (error) {
         console.error("Error casting vote:", error);
         alert(`Failed to cast vote: ${error.message}`);
     }
 }
 
-// View Results
 async function getResults() {
     try {
         const candidatesCount = await contract.methods.candidatesCount().call();
@@ -381,5 +367,4 @@ async function getResults() {
     }
 }
 
-// Auto-connect on page load
 window.onload = connectWallet;
