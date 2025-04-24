@@ -36,27 +36,25 @@ Clone the repository:
 + Add Ganache as a custom network in MetaMask:
   + RPC URL: http://127.0.0.1:7545
 
- - Chain ID: 1337 or 5777 (whichever Ganache shows)
+  + Chain ID: 1337 or 5777 (whichever Ganache shows)
 
- - Import a private key from Ganache into MetaMask
+  + Import a private key from Ganache into MetaMask
 
 + Open Remix IDE:
 
- - Create or paste your web3voting.sol smart contract
+  + Create or paste your web3voting.sol smart contract
 
- - Set compiler version to 0.8.0
+  + Set compiler version to 0.8.0
 
- - Deploy using "Injected Provider - MetaMask"
+  + Deploy using "Injected Provider - MetaMask"
 
- - Accept the MetaMask prompt
+  + Accept the MetaMask prompt
 
 + After deployment, copy the contract address and ABI (if you made any changes to .sol) and replace it in:
 
- - index.html
-
- - admin.js
-
- - voter.js
+  + index.html
+  + admin.js
+  + voter.js
 
 + Open the index.html in your browser.
 
