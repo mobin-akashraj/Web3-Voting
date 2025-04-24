@@ -260,13 +260,12 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]; // Add the actual ABI here if needed
-        const adminAddress = "0x874A99D4C1dFa854e63Ae439980b258Db15305D0".toLowerCase();
+]; // Add the actual ABI here if you made any changes to web3voting.sol
+        const adminAddress = "0x874A99D4C1dFa854e63Ae439980b258Db15305D0".toLowerCase(); // Update admin wallet address
 
         let contract;
         let userAccount = null;
 
-        // Connect Wallet
         async function connectWallet() {
             if (!window.ethereum) {
                 alert("MetaMask not detected! Please install it.");
@@ -284,7 +283,6 @@
             }
         }
 
-        // Open Admin or Voter Pages in a New Tab
         function openAdmin() {
             window.open("admin/admin.html", "_blank");
         }
@@ -293,16 +291,13 @@
             window.open("voter/voter.html", "_blank");
         }
 
-        // Auto-Check on Page Load
         window.onload = async () => {
             await connectWallet();
         };
 
-        // Check Access & Enable Buttons
 		async function checkAccess() {
 			if (!userAccount) return;
-
-			// 🔍 Check voter status using contract
+			
 			try {
 				contract = new web3.eth.Contract(contractABI, contractAddress);
 				const isVoter = await contract.methods.isRegisteredVoter(userAccount).call();
@@ -322,8 +317,6 @@
 			}
 		}
 
-
-        // Fetch Voter List
         async function getVoterList() {
             try {
                 contract = new web3.eth.Contract(contractABI, contractAddress);
