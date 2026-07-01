@@ -1,6 +1,8 @@
 # Web3-Voting
 ## Blockchain Based E-Voting System
 
+<img width="1920" height="1080" alt="Screenshot 2026-07-02 000519" src="https://github.com/user-attachments/assets/854aa9a9-a86f-4f6e-b477-ff1764c5e2be" />
+
 A decentralized and secure voting system built on blockchain technology. This system utilizes smart contracts to ensure transparency, immutability, and fairness in elections. It includes both an admin and voter interface, enabling the management of elections and casting of votes.
 
 ## Tech Stack
